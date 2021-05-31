@@ -1,0 +1,2 @@
+# Triggers file used by Debian installer
+activate-noawait ldconfig

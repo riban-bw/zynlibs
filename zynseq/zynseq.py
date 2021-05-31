@@ -25,7 +25,6 @@
 
 import ctypes
 from _ctypes import dlclose
-from os.path import dirname, realpath
 
 libseq = None
 
@@ -37,8 +36,8 @@ libseq = None
 #	Following function wrappers provide simple access for complex data types. Access with zynseq.function_name(parameters)
 #
 #	Include the following imports to access these two library objects:
-# 		from zynlibs.zynseq import zynseq
-#		from zynlibs.zynseq.zynseq import libseq
+# 		from zynseq import zynseq
+#		from zynseq.zynseq import libseq
 #
 #-------------------------------------------------------------------------------
 
@@ -46,7 +45,7 @@ libseq = None
 def init():
 	global libseq
 	try:
-		libseq=ctypes.cdll.LoadLibrary(dirname(realpath(__file__))+"/build/libzynseq.so")
+		libseq=ctypes.cdll.LoadLibrary("libzynseq.so")
 		libseq.getSequenceName.restype = ctypes.c_char_p
 		libseq.getTempo.restype = ctypes.c_double
 	except Exception as e:
